@@ -151,10 +151,54 @@ print(tChanger(t3))
 ### Ребята поспорили кто из них одним нажатием на numpad наберет больше повторяющихся цифр, но не понимают, как узнать победителя. Вам им нужно в этом помочь. Дана строка в виде случайной последовательности чисел от 0 до 9 (длина строки минимум 15 символов). Требуется создать словарь, который в качестве ключей будет принимать данные числа (т. е. ключи будут типом int), а в качестве значений – количество этих чисел в имеющейся последовательности. Для построения словаря создайте функцию, принимающую строку из цифр. Функция должна возвратить словарь из 3-х самых часто встречаемых чисел, также эти значения нужно вывести в порядке возрастания ключа.
 
 ``` Python
+def longestNumber(numbers):
+    if len(numbers) < 15:
+        return print("Длина числа менее 15")
 
+
+    dictNumbers = {0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0}
+    numbers = int(numbers)
+
+    for i in range(len(str(numbers))):
+        digit = numbers % 10
+        if digit == 0:
+            dictNumbers[digit] = dictNumbers[digit] + 1
+        elif digit == 1:
+            dictNumbers[digit] = dictNumbers[digit] + 1
+        elif digit == 2:
+            dictNumbers[digit] = dictNumbers[digit] + 1
+        elif digit == 3:
+            dictNumbers[digit] = dictNumbers[digit] + 1
+        elif digit == 4:
+            dictNumbers[digit] = dictNumbers[digit] + 1
+        elif digit == 5:
+            dictNumbers[digit] = dictNumbers[digit] + 1
+        elif digit == 6:
+            dictNumbers[digit] = dictNumbers[digit] + 1
+        elif digit == 7:
+            dictNumbers[digit] = dictNumbers[digit] + 1
+        elif digit == 8:
+            dictNumbers[digit] = dictNumbers[digit] + 1
+        elif digit == 9:
+            dictNumbers[digit] = dictNumbers[digit] + 1
+        numbers = numbers // 10
+
+    sortedDictNumbers = sorted(dictNumbers.items(), key=lambda x: x[1], reverse=True)
+
+    return sortedDictNumbers[:3]
+
+
+
+
+numbersInput = int(input())
+numbersInput = str(numbersInput)
+print(longestNumber(numbersInput))
 ```
 ### Результат
+<img width="1714" height="325" alt="image" src="https://github.com/user-attachments/assets/d61751fd-5ef4-472c-81f8-3500df6bc00a" />
+
 ### Вывод
+Я научился находить цмфру, которая встречается наибольшее количество раз в списке и выводить цифру в словаре.
 
 ## Самостоятельная работа №4
 ### Ваш хороший друг владеет офисом со входом по электронным картам, ему нужно чтобы вы написали программу, которая показывала в каком порядке сотрудники входили и выходили из офиса. Определение сотрудника происходит по id. Напишите функцию, которая на вход принимает кортеж и случайный элемент (id), его можно придумать самостоятельно. Требуется вернуть новый кортеж, начинающийся с первого появления элемента в нем и заканчивающийся вторым его появлением включительно. Если элемента нет вовсе – вернуть пустой кортеж. Если элемент встречается только один раз, то вернуть кортеж, который начинается с него и идет до конца исходного. Входные данные: (1, 2, 3), 8) (1, 8, 3, 4, 8, 8, 9, 2), 8) (1, 2, 8, 5, 1, 2, 9), 8) Ожидаемый результат: () (8, 3, 4, 8) (8, 5, 1, 2, 9)
