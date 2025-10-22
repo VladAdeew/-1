@@ -150,25 +150,71 @@ with open('rows300.csv', 'w', encoding = 'utf-8', newline = '') as f:
 <img width="639" height="605" alt="image" src="https://github.com/user-attachments/assets/6289db41-b17a-4b86-b1c2-0d88d0a93514" />
 
 ## Самостоятельная работа №1
-### 
+### Найдите в интернете любую статью (объем статьи не менее 200 слов), скопируйте ее содержимое в файл и напишите программу, которая считает количество слов в текстовом файле и определит самое часто встречающееся слово. Результатом выполнения задачи будет: скриншот файла со статьей, листинг кода, и вывод в консоль, в котором будет указана вся необходимая информация.
 ``` Python
+with open("text.txt", 'r') as f:
+    text = f.read()
+    text = text.lower().split()
 
+    listNo = [',','.','"',"'",'-','!','?','(',')','[',']',':',';']
+    listWords = []
+
+    for word in text:
+        wordIn = word
+        if wordIn[0] in listNo:
+            wordIn = wordIn[1:]
+            listWords.append(wordIn)
+        elif  wordIn[-1] in listNo:
+            wordIn = wordIn[:-1]
+            listWords.append(wordIn)
+        elif wordIn[0] not in listNo or wordIn[-1] not in listNo:
+            listWords.append(wordIn)
+
+    dictWords = dict()
+    for word in listWords:
+        dictWords[word] = dictWords.get(word, 0) + 1
+
+    dictWords = sorted(dictWords.items(), key=lambda x: x[1], reverse=True)
+    MaxWord = dictWords[0][0]
+
+    lenght = len(text)
+
+    print(f"Количество слов = {lenght}\nCлово, встречающееся наибольшее количество раз: '{MaxWord}'")
 ```
 ### Результат
+<img width="1577" height="589" alt="image" src="https://github.com/user-attachments/assets/c1164881-8eb1-422b-9bad-9756f208b25d" />
+<img width="1718" height="323" alt="image" src="https://github.com/user-attachments/assets/59f105ed-f686-4a04-9bee-2392294de1c8" />
 
 ### Вывод
+В Python возможно подтянуть файл, прочитать его, узнать количество слов, и узнать какое слово встречается чаще всего
 
 ## Самостоятельная работа №2
-### 
+### У вас появилась потребность в ведении книги расходов, посмотрев все существующие варианты вы пришли к выводу что вас ничего не устраивает и нужно все делать самому. Напишите программу для учета расходов. Программа должна позволять вводить информацию о расходах, сохранять ее в файл и выводить существующие данные в консоль. Ввод информации происходит через консоль. Результатом выполнения задачи будет: скриншот файла с учетом расходов, листинг кода, и вывод в консоль, с демонстрацией работоспособности программы.
 ``` Python
+def InputOutputData(num):
+    if num == '1':
+        with open('text.txt', 'r', encoding='utf-8') as f:
+            return print(f.read())
+    elif num == '2':
+        with open('text.txt', 'a+', encoding='utf-8') as f:
+            data = input("Введите данные: ")
+            f.write(f'{data}\n')
+            return print("Данные внесены")
 
+
+while(True):
+    WhatWeDo = input("Введите значение: Вывести данные - 1, внести данные - 2 \n")
+    InputOutputData(WhatWeDo)
 ```
 ### Результат
+<img width="1704" height="789" alt="image" src="https://github.com/user-attachments/assets/587588b6-936c-4482-a917-290992151f06" />
+<img width="1536" height="1011" alt="image" src="https://github.com/user-attachments/assets/4bf25287-b8c8-4883-9694-5e2f5ab3c81c" />
 
 ### Вывод
+В Python можно создать собственную записную книжку.
 
 ## Самостоятельная работа №3
-### 
+### Имеется файл input.txt с текстом на латинице. Напишите программу, которая выводит следующую статистику по тексту: количество букв латинского алфавита; число слов; число строк. • Текст в файле: Beautiful is better than ugly. Explicit is better than implicit. Simple is better than complex. Complex is better than complicated. • Ожидаемый результат: Input file contains: 108 letters 20 words 4 lines
 ``` Python
 
 ```
@@ -177,14 +223,14 @@ with open('rows300.csv', 'w', encoding = 'utf-8', newline = '') as f:
 ### Вывод
 
 ## Самостоятельная работа №4
-### 
+### Напишите программу, которая получает на вход предложение, выводит его в терминал, заменяя все запрещенные слова звездочками * (количество звездочек равно количеству букв в слове). Запрещенные слова, разделенные символом пробела, хранятся в текстовом файле input.txt. Все слова в этом файле записаны в нижнем регистре. Программа должна заменить запрещенные слова, где бы они ни встречались, даже в середине другого слова. Замена производится независимо от регистра: если файл input.txt содержит запрещенное слово exam, то слова exam, Exam, ExaM, EXAM и exAm должны быть заменены на ****. • Запрещенные слова: hello email python the exam wor is • Предложение для проверки: Hello, world! Python IS the programming language of thE future. My EMAIL is.... PYTHON is awesome!!!! • Ожидаемый результат: *****, ***ld! ****** ** *** programming language of *** future. My ***** **.... ****** ** awesome!!!!
 ``` Python
 
 ```
 ### Результат
 
 ## Самостоятельная работа №5
-### 
+### Самостоятельно придумайте и решите задачу, которая будет взаимодействовать с текстовым файлом
 ``` Python
 
 ```
