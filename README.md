@@ -167,26 +167,91 @@ myWear.putInTheCloset()
 ## Самостоятельная работа №3
 ### Самостоятельно реализуйте наследование, продолжая работать с ранее созданным классом. Оно должно отличаться, от того, что указано в теоретическом материале (методичке) и лабораторных заданиях. Результатом выполнения задания будет листинг кода и получившийся вывод консоли.
 ``` Python
+class Wear:
+    def __init__(self, type, size):
+        self.type = type
+        self.size = size
+        self.inCloset = False
 
+    def putInTheCloset(self):
+        self.inCloset = True
+        print(f'Одежда {self.type}, размера {self.size} положена в шкаф')
+
+class petWear(Wear):
+    def __init__(self, type, size, collar):
+        super().__init__(type, size)
+        self.collar = collar
+        self.CollarOn = False
+
+    def putOnACollar(self):
+        self.CollarOn = True
+        print(f"{self.collar} ошейник надет")
+
+
+
+petWear = petWear('Куртка', "S", "Зеленый")
+petWear.putInTheCloset()
+petWear.putOnACollar()
 ```
 ### Результат
+<img width="1715" height="274" alt="image" src="https://github.com/user-attachments/assets/9dc6402e-c5db-4248-ab45-dbbcd1ce7852" />
 
 ### Вывод
+Я научился реализовывать наследование
 
 ## Самостоятельная работа №4
 ### Самостоятельно реализуйте инкапсуляцию, продолжая работать с ранее созданным классом. Она должна отличаться, от того, что указана в теоретическом материале (методичке) и лабораторных заданиях. Результатом выполнения задания будет листинг кода и получившийся вывод консоли.
 ``` Python
+class Wear:
+    def __init__(self, type, size):
+        self._type = type
+        self._size = size
+        self.__inCloset = False
 
+    def putInTheCloset(self):
+        self.__inCloset = True
+        print(f'Одежда {self._type}, размера {self._size} положена в шкаф')
+
+myWear = Wear('Штаны', "M")
+print(myWear._type)
+print(myWear._size)
 ```
 ### Результат
+<img width="1705" height="274" alt="image" src="https://github.com/user-attachments/assets/ec3abdd8-4e64-4dcf-ba02-c13b16c89c52" />
 
 ### Вывод
+Я научился применять инкапсуляцию
 
 ## Самостоятельная работа №5
 ### Самостоятельно реализуйте полиморфизм. Он должен отличаться, от того, что указан в теоретическом материале (методичке) и лабораторных заданиях. Результатом выполнения задания будет листинг кода и получившийся вывод консоли.
 ``` Python
+class Wear:
+    def HumanOrDog(self):
+        pass
 
+class HumanWear(Wear):
+    def __init__(self, type, size):
+        self.type = type
+        self.size = size
+
+    def HumanOrDog(self):
+        print('Человеческая одежда, т. к. нет ошейника')
+
+class DogWear(Wear):
+    def __init__(self, type, size, collar):
+        self.type = type
+        self.size = size
+        self.collar = collar
+
+    def HumanOrDog(self):
+        print("Собачья одежда, т. к. с ошейником")
+
+AllWear = [HumanWear('Штаны', 'M'), DogWear('Куртка', 'S', 'Зеленый')]
+for wear in AllWear:
+    wear.HumanOrDog()
 ```
 ### Результат
+<img width="1717" height="271" alt="image" src="https://github.com/user-attachments/assets/c57b254a-ce89-4406-9b93-a22a5a12d47e" />
 
 ### Вывод
+Я научился применять полиморфизм в ООП
